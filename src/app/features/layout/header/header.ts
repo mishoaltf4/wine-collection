@@ -2,12 +2,13 @@ import { Component,  inject, signal } from '@angular/core';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { LangService } from '../../../core/services/lang-service';
 import { NgClass } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 export type Lang = 'ka' | 'en';
 
 @Component({
   selector: 'app-header',
-  imports: [TranslatePipe, NgClass],
+  imports: [TranslatePipe, NgClass, RouterLink],
   templateUrl: './header.html',
   styleUrl: './header.css',
 })

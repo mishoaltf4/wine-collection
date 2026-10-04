@@ -1,3 +1,19 @@
+.hero{
+   width: 100%;
+  height: auto;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: -20px;
+    background: url('/images/home/something.jpg') center / cover;
+    filter: blur(16px);
+    z-index: 0;
+  }
+}
+
 .upcomoing {
   width: 100%;
   height: auto;
@@ -29,7 +45,6 @@
         li {
           font-size: 12px;
           color: #fff;
-          width: 64px;
           text-align: center;
         }
       }
@@ -47,7 +62,7 @@
     content: '';
     position: absolute;
     inset: -20px;
-    background: url('/images/home/test.jpg') center / cover;
+    background: url('/images/home/mta.jpg') center / cover;
     filter: blur(16px);
     z-index: 0;
   }
@@ -56,6 +71,33 @@
     position: relative;
     z-index: 1;
 
+    .festivals{
+      .box{
+        background: url('/images/home/mta.jpg') center / cover;
+      }
+    }
+  }
+}
+
+.partners{
+    width: 100%;
+  height: auto;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: -20px;
+    background: url('/images/home/something.jpg') center / cover;
+    filter: blur(16px);
+    z-index: 0;
+  }
+
+  .box{
+    .img{
+      background: center / cover;
+    }
   }
 }
 

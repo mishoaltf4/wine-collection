@@ -1,5 +1,5 @@
 import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import { provideRouter, withInMemoryScrolling } from '@angular/router';
 
 import { routes } from './app.routes';
 import { provideTranslateService } from '@ngx-translate/core';
@@ -16,6 +16,6 @@ export const appConfig: ApplicationConfig = {
       fallbackLang: 'ka',
       lang: localStorage.getItem('lang') ?? 'en',
     }),
-    provideRouter(routes)
+    provideRouter(routes, withInMemoryScrolling({anchorScrolling: 'enabled', scrollPositionRestoration: 'enabled'}))
   ]
 };

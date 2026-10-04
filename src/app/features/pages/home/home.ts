@@ -1,5 +1,6 @@
 import { NgClass } from '@angular/common';
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, computed, inject, signal, afterNextRender, HostListener } from '@angular/core';
+import AOS from 'aos';
 import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
@@ -9,32 +10,56 @@ import { TranslatePipe } from '@ngx-translate/core';
   styleUrl: './home.css',
 })
 export class Home {
+  private width = signal<number | null>(null);
+  constructor() {
+    this.width.set(window.innerWidth);
+
+    this.setCaruselMaxVisibleItems(this.width()!);
+
+    afterNextRender(() => {
+      AOS.init({ duration: 800, easing: 'ease-out-cubic', once: true, offset: 80 });
+    });
+  }
+
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.width.set(event.target.innerWidth);
+
+    this.setCaruselMaxVisibleItems(this.width()!);
+  }
+
+
   protected data = signal<any[]>([
     {
       id: 1,
+      img: '/images/home/something.jpg',
       title: 'something 1',
     },
     {
       id: 2,
+      img: '/images/home/test.jpg',
       title: 'something 2',
     },
     {
       id: 3,
+      img: '/images/home/mta.jpg',
       title: 'something 3',
     },
     {
       id: 4,
+      img: '/images/home/test.jpg',
       title: 'something 4',
     },
   ]);
 
   protected start = signal(0);
-  protected readonly perView = 3;
+  protected perView = signal<number>(3);
 
-  protected visible = computed(() => this.data().slice(this.start(), this.start() + this.perView));
+  protected visible = computed(() => this.data().slice(this.start(), this.start() + this.perView()));
 
   protected canPrev = computed(() => this.start() > 0);
-  protected canNext = computed(() => this.start() + this.perView < this.data().length);
+  protected canNext = computed(() => this.start() + this.perView() < this.data().length);
 
   protected next() {
     if (this.canNext()) this.start.update((s) => s + 1);
@@ -58,7 +83,7 @@ export class Home {
     'NOVEMBER',
     'DECEMBER',
   ];
-  // Monday-first
+
   readonly weekdays = signal([
     'MONDAY',
     'TUESDAY',
@@ -69,21 +94,26 @@ export class Home {
     'SUNDAY',
   ]);
 
-  year = signal(2026);
-  month = signal(9);
-  selected = signal<Date | null>(null);
-
-  monthName = computed(() => this.months[this.month()]);
-
   protected activeFestivals = signal([
     {
       id: 1,
-      day: 24,
+      date: new Date(2026, 9, 24),
+      title: 'something',
+    },
+    {
+      id: 1,
+      date: new Date(2026, 9, 27),
       title: 'something',
     },
   ]);
 
-  cells = computed<Cell[]>(() => {
+  protected year = signal(2026);
+  protected month = signal(9);
+  protected selected = signal<Date | null>(this.activeFestivals()[0].date ?? null);
+
+  protected monthName = computed(() => this.months[this.month()]);
+
+  protected cells = computed<Cell[]>(() => {
     const y = this.year();
     const m = this.month();
     const offset = (new Date(y, m, 1).getDay() + 6) % 7; // Mon = 0
@@ -93,25 +123,35 @@ export class Home {
     return out;
   });
 
-  isSelected(c: Cell): boolean {
+  private setCaruselMaxVisibleItems(windowWidth: number): void {
+    if (windowWidth < 950) {
+      this.perView.set(1)
+    } else if (windowWidth < 1450) {
+      this.perView.set(2)
+    } else {
+      this.perView.set(3)
+    }
+  }
+
+  protected isSelected(cell: Cell): boolean {
     const s = this.selected();
-    return !!c.date && !!s && c.date.toDateString() === s.toDateString();
+    return !!cell.date && !!s && cell.date.toDateString() === s.toDateString();
   }
 
-  select(c: Cell): void {
-    if (c.date) this.selected.set(c.date);
+  protected select(cell: Cell): void {
+    if (cell.date) this.selected.set(cell.date);
   }
 
-  shift(delta: number): void {
+  protected shift(delta: number): void {
     const d = new Date(this.year(), this.month() + delta, 1);
     this.year.set(d.getFullYear());
     this.month.set(d.getMonth());
   }
 
-  isFestival(c: Cell): boolean {
-    if (!c.date) return false;
+  protected isFestival(cell: Cell): boolean {
+    if (!cell.date) return false;
 
-    return this.activeFestivals().some((festival) => festival.day === c.date!.getDate());
+    return this.activeFestivals().some((festival) => festival.date.getDate() === cell.date!.getDate());
   }
 }
 

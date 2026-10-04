@@ -1,6 +1,7 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Header } from './features/layout/header/header';
+import { ViewportScroller } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -10,4 +11,7 @@ import { Header } from './features/layout/header/header';
 })
 export class App {
   protected readonly title = signal('wine-collection');
+  constructor() {
+    inject(ViewportScroller).setOffset([0, 100]); // [x, y] = header height
+  }
 }
