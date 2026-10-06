@@ -24,7 +24,7 @@
     content: '';
     position: absolute;
     inset: -20px;
-    background: url('/images/home/test.jpg') center / cover;
+    background: url('/images/home/mta.jpg') center / cover;
     filter: blur(16px);
     z-index: 0;
   }
@@ -62,7 +62,7 @@
     content: '';
     position: absolute;
     inset: -20px;
-    background: url('/images/home/mta.jpg') center / cover;
+    background: url('/images/home/test.jpg') center / cover;
     filter: blur(16px);
     z-index: 0;
   }

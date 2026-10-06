@@ -108,7 +108,7 @@ export class Home {
   ]);
 
   protected year = signal(2026);
-  protected month = signal(9);
+  protected month = signal(new Date().getMonth());
   protected selected = signal<Date | null>(this.activeFestivals()[0].date ?? null);
 
   protected monthName = computed(() => this.months[this.month()]);
@@ -116,7 +116,7 @@ export class Home {
   protected cells = computed<Cell[]>(() => {
     const y = this.year();
     const m = this.month();
-    const offset = (new Date(y, m, 1).getDay() + 6) % 7; // Mon = 0
+    const offset = (new Date(y, m, 1).getDay() + 6) % 7;
     const total = new Date(y, m + 1, 0).getDate();
     const out: Cell[] = Array.from({ length: offset }, () => ({ day: null, date: null }));
     for (let d = 1; d <= total; d++) out.push({ day: d, date: new Date(y, m, d) });
@@ -151,7 +151,9 @@ export class Home {
   protected isFestival(cell: Cell): boolean {
     if (!cell.date) return false;
 
-    return this.activeFestivals().some((festival) => festival.date.getDate() === cell.date!.getDate());
+    return this.activeFestivals().some(
+      festival => festival.date.toDateString() === cell.date!.toDateString()
+    );
   }
 }
 
