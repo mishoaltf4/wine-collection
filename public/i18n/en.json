@@ -1,39 +1,98 @@
 {
   "NAVIGATION": {
-    "UPCOMING_EVENTS": "upcoming events",
-    "WHAT_WE_DO": "what we do",
-    "PARTNERS": "partners",
-    "CONTACT": "contact"
+    "UPCOMING_EVENTS": "Upcoming Events",
+    "WHAT_WE_DO": "What We Do",
+    "PARTNERS": "Partners",
+    "CONTACT": "Contact"
   },
   "MONTHS": {
-    "JANUARY": "january",
-    "FEBRUARY": "february",
-    "MARCH": "march",
-    "APRIL": "APRIL",
-    "MAY": "may",
-    "JUNE": "JUNE",
+    "JANUARY": "January",
+    "FEBRUARY": "February",
+    "MARCH": "March",
+    "APRIL": "April",
+    "MAY": "May",
+    "JUNE": "June",
     "JULY": "July",
-    "AUGUST": "august",
-    "SEPTEMBER": "september",
+    "AUGUST": "August",
+    "SEPTEMBER": "September",
     "OCTOBER": "October",
-    "NOVEMBER": "november",
+    "NOVEMBER": "November",
     "DECEMBER": "December"
   },
   "WEEKENDS": {
-    "MONDAY": "mon",
-    "TUESDAY": "tue",
-    "WEDNESDAY": "wed",
-    "THURSDAY": "thu",
-    "FRIDAY": "fri",
-    "SATURDAY": "sat",
-    "SUNDAY": "sun"
+    "MONDAY": "Mon",
+    "TUESDAY": "Tue",
+    "WEDNESDAY": "Wed",
+    "THURSDAY": "Thu",
+    "FRIDAY": "Fri",
+    "SATURDAY": "Sat",
+    "SUNDAY": "Sun"
+  },
+  "COMMON": {
+    "SEE_MORE": "Learn More",
+    "PLACE": "Venue"
   },
   "HERO": {
-    "TITLE": "Where Ancient Tradition Meets Modern Craft",
-    "SUBTITLE": "preserving and promoting Georgian wine culture. Festivals, symposiums, and winemakingforums."
+    "TITLE": "Sharing Georgian Wine with the World.",
+    "SUBTITLE": "Wine Collection of Georgia connects winemakers, professionals and wine lovers through festivals, tastings and cultural projects - celebrating Georgian wine and creating opportunities for collaboration."
+  },
+  "UPCOMING_EVENTS": {
+    "TITLE": "Explore Our Events.",
+    "EVENTS": {
+      "EVENT_1": {
+        "TITLE": "Sighnaghi Autumn Festival - SignWine",
+        "DATE": "October 31",
+        "PLACE": "City of Sighnaghi",
+        "PLACE_SHORT": "Sighnaghi",
+        "DESCRIPTION": "Discover Georgian wines and meet their makers in the heart of Sighnaghi. SignWine 2026 brings together wine tastings, regional gastronomy, a professional forum and cultural experiences for a celebration of autumn."
+      }
+    }
+  },
+  "WHAT_WE_DO": {
+    "TITLE": "What We Do",
+    "SUBTITLE": "We bring Georgian wine into conversation with people, places and cultures - connecting its producers with wine lovers and professionals, and creating opportunities for exchange and international collaboration.",
+    "INFO_1": "Our festivals invite visitors to discover Georgian wines and meet their makers. Tastings, forums and symposiums bring winemakers, sommeliers and international guests together, while art, music and regional traditions give each experience its own character."
+  },
+  "SERVICES": {
+    "WINE_FESTIVALS": "Wine Festivals",
+    "FORUMS_SYMPOSIUMS": "Forums & Symposiums",
+    "WINE_TASTINGS_EVALUATION": "Wine Tastings & Evaluation",
+    "INTERNATIONAL_PARTNERSHIPS": "International Partnerships",
+    "WINE_CULTURAL_PROJECTS": "Wine & Cultural Projects",
+    "WINERY_PRODUCER_PROMOTION": "Winery & Producer Promotion"
+  },
+  "PARTNERS_SUPPORT": {
+    "TITLE": "Partners & Support",
+    "CONTENT": "Our projects are developed with the support of the Ministry of Environmental Protection and Agriculture of Georgia and the National Wine Agency, alongside municipalities and cultural institutions across Georgia. These partnerships bring together national expertise, local knowledge and cultural perspectives, strengthening our work in promoting Georgian wine in Georgia and internationally."
+  },
+  "PAST_EVENTS": {
+    "TITLE": "Our Previous Festivals:",
+    "PAST_EVENTS_LIST": {
+      "PAST_EVENT_1": {
+        "DATE": "28 June, 2025 • Batumi, Georgia",
+        "TITLE": "Adjara Seaside Wine Festival 2025"
+      },
+      "PAST_EVENT_2": {
+        "DATE": "22 November, 2025 • Sighnaghi, Georgia",
+        "TITLE": "Sighnaghi Autumn Festival - SignWine 2025"
+      },
+      "PAST_EVENT_3": {
+        "DATE": "4 April, 2026 • Mephis Kalaki, Kaspi, Georgia",
+        "TITLE": "Japanese-Georgian Wine Symposium 2026"
+      },
+      "PAST_EVENT_4": {
+        "DATE": "3 July, 2026 • Castello Mare, Tsikhisdziri, Georgia",
+        "TITLE": "Adjara Seaside Wine Festival 2026"
+      }
+    }
+  },
+  "PARTNERS": {
+    "TITLE": "Our Partner Wineries",
+    "CONTENT": "Meet the wineries we work with through our festivals, tastings and professional programmes - each bringing its own wines, stories and regional character to the WCG community."
   },
   "FOOTER": {
-    "INQUIRIES": "inquiries",
-    "FAQ": "Wine Collection Of Georgia. All rights reserved."
+    "INQUIRIES": "Get in Touch",
+    "FAQ": "Wine Collection of Georgia. All rights reserved.",
+    "TAGLINE": "Celebrating Georgian wine and connecting the people behind it through festivals, professional dialogue and cultural exchange."
   }
 }

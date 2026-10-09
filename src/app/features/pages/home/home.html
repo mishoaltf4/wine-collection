@@ -6,9 +6,18 @@
         <h2 class="text-[60px] text-white font-normal" data-aos="fade-up" data-aos-duration="1000">
           {{ 'HERO.TITLE' | translate }}
         </h2>
-        <div class="line w-25 h-0.25 bg-gold origin-left" data-aos="zoom-in-right" data-aos-delay="250"
-          data-aos-duration="1000"></div>
-        <p class="text-white leading-[175%] text-[16px]" data-aos="fade-up" data-aos-delay="450" data-aos-duration="1000">
+        <div
+          class="line w-25 h-0.25 bg-gold origin-left"
+          data-aos="zoom-in-right"
+          data-aos-delay="250"
+          data-aos-duration="1000"
+        ></div>
+        <p
+          class="text-white leading-[175%] text-[16px]"
+          data-aos="fade-up"
+          data-aos-delay="450"
+          data-aos-duration="1000"
+        >
           {{ 'HERO.SUBTITLE' | translate }}
         </p>
       </div>
@@ -19,14 +28,26 @@
   <div class="upcomoing w-full scroll-mt-24" id="upcoming">
     <div class="container max-lg:px-5">
       <div class="upcomoing-inner w-full h-full py-25">
-        <h2 class="text-[60px] max-md:text-[36px] text-gold font-normal" data-aos="fade-right">მომავალი ღონისძიებები</h2>
-        <div class="line w-full h-0.25 bg-gold mt-4 origin-left" data-aos="zoom-in-right" data-aos-delay="150"
-          data-aos-duration="1100"></div>
+        <h2 class="text-[60px] max-md:text-[36px] text-gold font-normal" data-aos="fade-right">
+          {{ 'UPCOMING_EVENTS.TITLE' | translate }}
+        </h2>
+        <div
+          class="line w-full h-0.25 bg-gold mt-4 origin-left"
+          data-aos="zoom-in-right"
+          data-aos-delay="150"
+          data-aos-duration="1100"
+        ></div>
 
         <div class="calendar-fesival flex max-lg:flex-col gap-12 mt-12">
-          <div class="calendar lg:min-w-130 h-auto flex flex-col gap-6" data-aos="fade-up" data-aos-delay="100">
+          <div
+            class="calendar lg:min-w-130 h-auto flex flex-col gap-6"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
             <div class="top flex justify-between">
-              <h3 class="text-white text-[56px] max-md:text-[46px] max-sm:text-[38px]">{{ 'MONTHS.' + monthName() | translate }}</h3>
+              <h3 class="text-white text-[56px] max-md:text-[46px] max-sm:text-[38px]">
+                {{ 'MONTHS.' + monthName() | translate }}
+              </h3>
               <p class="mt-auto text-white text-[32px] max-md:text-[22px]">{{ year() }}</p>
             </div>
 
@@ -35,51 +56,61 @@
             <div class="days w-full">
               <ul class="grid grid-cols-7">
                 @for (weekDay of weekdays(); track $index) {
-                <li class="max-md:w-9">{{ `WEEKENDS.` + weekDay | translate }}</li>
+                  <li class="max-md:w-9">{{ `WEEKENDS.` + weekDay | translate }}</li>
                 }
               </ul>
             </div>
 
             <div class="numbers grid grid-cols-7">
               @for (c of cells(); track $index) {
-              @if (c.day) {
-              <button type="button"
-                class="day md:mx-auto md:w-16 md:h-16 w-9 text-[16px] max-md:text-[12px] h-9 flex items-center justify-center text-white/40 transition-all duration-300 ease-out"
-                [ngClass]="{
+                @if (c.day) {
+                  <button
+                    type="button"
+                    class="day md:mx-auto md:w-16 md:h-16 w-9 text-[16px] max-md:text-[12px] h-9 flex items-center justify-center text-white/40 transition-all duration-300 ease-out"
+                    [ngClass]="{
                       'bg-gold scale-105': isSelected(c),
-                      'text-white/100 hover:bg-gold/30 cursor-pointer': isFestival(c)
-                    }" (click)="isFestival(c) ? select(c) : ''">
-                {{ c.day }}
-              </button>
-              } @else {
-              <span class="day empty"></span>
-              }
+                      'text-white/100 hover:bg-gold/30 cursor-pointer': isFestival(c),
+                    }"
+                    (click)="isFestival(c) ? select(c) : ''"
+                  >
+                    {{ c.day }}
+                  </button>
+                } @else {
+                  <span class="day empty"></span>
+                }
               }
             </div>
           </div>
 
-          <div class="festival p-8 max-md:p-6 flex flex-col gap-6 backdrop-blur-[16px] w-full h-auto rounded-[4px]"
-            data-aos="fade-up" data-aos-delay="300">
+          <div
+            class="festival p-8 max-md:p-6 flex flex-col gap-6 backdrop-blur-[26px] w-full h-auto rounded-[4px]"
+            data-aos="fade-up"
+            data-aos-delay="300"
+          >
             <div class="title">
-              <p class="text-gold text-[14px] uppercase font-bold">14 october signagi</p>
-              <h3 class="text-[40px] text-navy mt-3"><i>Wine Festival</i></h3>
+              <p class="text-gold text-[14px] uppercase font-bold font-case">{{selectedFestival()?.dateToDisplay | translate}} · {{selectedFestival()?.placeShort | translate}}</p>
+              <h3 class="text-[40px] text-navy mt-3"><i>{{selectedFestival()?.title | translate}}</i></h3>
             </div>
 
             <div class="line w-full h-0.25 bg-white"></div>
             <div class="description">
               <p class="text-white">
-                ღვინის დეგუსტაციის ფესტივალის აღწერა ღვინის დეგუსტაციის ფესტივალის აღწერა ღვინის
-                დეგუსტაციის ფესტივალის აღწერა ღვინის დეგუსტაციის ფესტივალის აღწერა ღვინის
-                დეგუსტაციის ფესტივალის აღწერა
+                {{selectedFestival()?.description | translate}}
               </p>
             </div>
             <div class="line w-full h-0.25 bg-white"></div>
 
-            <div class="img w-full rounded-[4px] aspect-16/46"></div>
+            <div class="img w-full rounded-[4px] aspect-11/4 relative">
+              <div class="place absolute px-3.5 py-2.5 bottom-3 left-5 bg-white/70 rounded-sm">
+                <p class="text-navy font-semibold text-[12px] font-case">{{"COMMON.PLACE" | translate}}</p>
+                <span class="text-navy font-semibold text-[15px]">{{selectedFestival()?.place | translate}}</span>
+              </div>
+            </div>
 
             <button
-              class="w-full h-12 bg-navy text-gold transition-all duration-300 hover:brightness-125 hover:-translate-y-0.5 cursor-pointer">
-              გაიგეთ მეტი
+              class="w-full h-12 bg-navy text-gold transition-all duration-300 hover:brightness-125 hover:-translate-y-0.5 cursor-pointer"
+            >
+              {{"COMMON.SEE_MORE" | translate}}
             </button>
           </div>
         </div>
@@ -93,63 +124,92 @@
       <div class="what-we-do__inner flex flex-col gap-8">
         <div class="title flex justify-between max-md:flex-col max-md:gap-6">
           <div class="big flex flex-col gap-4">
-            <h2 class="text-[44px] max-md:text-[36px] text-white" data-aos="fade-up">What we do</h2>
-            <div class="line w-20 h-0.25 bg-gold origin-left" data-aos="zoom-in-right" data-aos-delay="150"></div>
+            <h2 class="text-[44px] max-md:text-[36px] text-white" data-aos="fade-up">
+              {{ 'WHAT_WE_DO.TITLE' | translate }}
+            </h2>
+            <div
+              class="line w-20 h-0.25 bg-gold origin-left"
+              data-aos="zoom-in-right"
+              data-aos-delay="150"
+            ></div>
           </div>
           <p class="mt-auto text-white md:w-2/3 w-full" data-aos="fade-up" data-aos-delay="200">
-            Wine Collection Of Georgia creates platforms for dialogue, collaboration and growth,
-            uniting Georgian wine with international partners, professionals and new markets.
-            Georgia connects.
+            {{ 'WHAT_WE_DO.SUBTITLE' | translate }}
           </p>
         </div>
 
         <div
           class="boxes w-full h-auto bg-navy p-4 grid grid-cols-1 gap-y-3 md:grid-cols-3 px-8 lg:grid-cols-6 lg:px-0 lg:py-10"
-          data-aos="fade-up">
+          data-aos="fade-up"
+        >
           <div
             class="box group w-full h-auto flex flex-col items-center max-md:justify-center gap-2 lg:h-40 lg:justify-center min-h-21"
-            data-aos="zoom-in" data-aos-delay="0">
-            <div class="icon w-9 h-9 bg-red-700 transition-transform duration-300 group-hover:scale-110"></div>
+            data-aos="zoom-in"
+            data-aos-delay="0"
+          >
+            <div
+              class="icon w-9 h-9 bg-red-700 transition-transform duration-300 group-hover:scale-110"
+            ></div>
             <p class="text-gold text-[16px] font-bold text-center lg:px-6 lg:text-[18px]">
               Forums & Symposiums
             </p>
           </div>
           <div
             class="box group w-full h-auto flex flex-col items-center max-md:justify-center gap-2 lg:h-40 lg:justify-center min-h-21"
-            data-aos="zoom-in" data-aos-delay="100">
-            <div class="icon w-9 h-9 bg-red-700 transition-transform duration-300 group-hover:scale-110"></div>
+            data-aos="zoom-in"
+            data-aos-delay="100"
+          >
+            <div
+              class="icon w-9 h-9 bg-red-700 transition-transform duration-300 group-hover:scale-110"
+            ></div>
             <p class="text-gold text-[16px] font-bold text-center lg:px-6 lg:text-[18px]">
               International Cooperation
             </p>
           </div>
           <div
             class="box group w-full h-auto flex flex-col items-center max-md:justify-center gap-2 lg:h-40 lg:justify-center min-h-21"
-            data-aos="zoom-in" data-aos-delay="200">
-            <div class="icon w-9 h-9 bg-red-700 transition-transform duration-300 group-hover:scale-110"></div>
+            data-aos="zoom-in"
+            data-aos-delay="200"
+          >
+            <div
+              class="icon w-9 h-9 bg-red-700 transition-transform duration-300 group-hover:scale-110"
+            ></div>
             <p class="text-gold text-[16px] font-bold text-center lg:px-6 lg:text-[18px]">
               Heritage Preservation
             </p>
           </div>
           <div
             class="box group w-full h-auto flex flex-col items-center max-md:justify-center gap-2 lg:h-40 lg:justify-center min-h-21"
-            data-aos="zoom-in" data-aos-delay="300">
-            <div class="icon w-9 h-9 bg-red-700 transition-transform duration-300 group-hover:scale-110"></div>
+            data-aos="zoom-in"
+            data-aos-delay="300"
+          >
+            <div
+              class="icon w-9 h-9 bg-red-700 transition-transform duration-300 group-hover:scale-110"
+            ></div>
             <p class="text-gold text-[16px] font-bold text-center lg:px-6 lg:text-[18px]">
               Wine Promotion & Export Opportunities
             </p>
           </div>
           <div
             class="box group w-full h-auto flex flex-col items-center max-md:justify-center gap-2 lg:h-40 lg:justify-center min-h-21"
-            data-aos="zoom-in" data-aos-delay="400">
-            <div class="icon w-9 h-9 bg-red-700 transition-transform duration-300 group-hover:scale-110"></div>
+            data-aos="zoom-in"
+            data-aos-delay="400"
+          >
+            <div
+              class="icon w-9 h-9 bg-red-700 transition-transform duration-300 group-hover:scale-110"
+            ></div>
             <p class="text-gold text-[16px] font-bold text-center lg:px-6 lg:text-[18px]">
               Education & Promotion
             </p>
           </div>
           <div
             class="box group w-full h-auto flex flex-col items-center max-md:justify-center gap-2 lg:h-40 lg:justify-center min-h-21"
-            data-aos="zoom-in" data-aos-delay="500">
-            <div class="icon w-9 h-9 bg-red-700 transition-transform duration-300 group-hover:scale-110"></div>
+            data-aos="zoom-in"
+            data-aos-delay="500"
+          >
+            <div
+              class="icon w-9 h-9 bg-red-700 transition-transform duration-300 group-hover:scale-110"
+            ></div>
             <p class="text-gold text-[16px] font-bold text-center lg:px-6 lg:text-[18px]">
               Cultural & Educational Projects
             </p>
@@ -157,9 +217,7 @@
         </div>
 
         <p class="text-white" data-aos="fade-up">
-          Wine Collection Of Georgia creates platforms for dialogue, collaboration and growth,
-          uniting Georgian wine with international partners, professionals and new markets. Georgia
-          connects.
+          {{"WHAT_WE_DO.INFO_1" | translate}}
         </p>
         <p class="text-white" data-aos="fade-up">
           Wine Collection Of Georgia creates platforms for dialogue, collaboration and growth,
@@ -168,32 +226,23 @@
         </p>
 
         <div class="festivals">
-          <h2 class="text-[36px] max-md:text-[32px] text-white" data-aos="fade-up">Our Previous Festivals</h2>
+          <h2 class="text-[36px] max-md:text-[32px] text-white" data-aos="fade-up">
+            {{"PAST_EVENTS.TITLE" | translate}}
+          </h2>
           <div class="boxes mt-9 grid grid-cols-1 gap-y-4 md:grid-cols-2 md:gap-5">
-            <div class="box w-full rounded-sm overflow-hidden transition-transform duration-500"
-              data-aos="fade-up" data-aos-delay="0">
-              <div class="img w-full h-[190px]"></div>
-              <div class="content p-4 flex flex-col gap-2 backdrop-blur-[16px]">
-                <p class="text-white text-[14px]">2 JULY, 2026 · TBILISI, GEORGIA</p>
-                <h4 class="text-gold text-[21px]">WineFest 2026</h4>
+            @for (pastEvent of pastEvents(); track $index) {
+              <div
+                class="box w-full rounded-sm overflow-hidden transition-transform duration-500"
+                data-aos="fade-up"
+                data-aos-delay="0"
+              >
+                <div class="img w-full h-[190px]"></div>
+                <div class="content p-4 flex flex-col gap-2 backdrop-blur-[26px]">
+                  <p class="text-white text-[14px]">{{pastEvent.date | translate}}</p>
+                  <h4 class="text-gold text-[21px]">{{pastEvent.title | translate}}</h4>
+                </div>
               </div>
-            </div>
-            <div class="box w-full rounded-sm overflow-hidden transition-transform duration-500"
-              data-aos="fade-up" data-aos-delay="100">
-              <div class="img w-full h-[190px]"></div>
-              <div class="content p-4 flex flex-col gap-2 backdrop-blur-[16px]">
-                <p class="text-white text-[14px]">2 JULY, 2026 · TBILISI, GEORGIA</p>
-                <h4 class="text-gold text-[21px]">WineFest 2026</h4>
-              </div>
-            </div>
-            <div class="box w-full rounded-sm overflow-hidden transition-transform duration-500"
-              data-aos="fade-up" data-aos-delay="200">
-              <div class="img w-full h-[190px]"></div>
-              <div class="content p-4 flex flex-col gap-2 backdrop-blur-[16px]">
-                <p class="text-white text-[14px]">2 JULY, 2026 · TBILISI, GEORGIA</p>
-                <h4 class="text-gold text-[21px]">WineFest 2026</h4>
-              </div>
-            </div>
+            }
           </div>
         </div>
       </div>
@@ -206,35 +255,54 @@
       <div class="partners-inner py-20">
         <div class="title flex justify-between max-lg:flex-col max-lg:gap-4">
           <div class="left flex flex-col gap-3" data-aos="fade-right" data-aos-delay="300">
-            <h2 class="text-[44px] text-gold">ჩვენი პარტნიორი მარნები</h2>
+            <h2 class="text-[44px] text-gold">{{"PARTNERS.TITLE" | translate}}</h2>
             <div class="line w-15 h-0.25 bg-gold"></div>
           </div>
-          <p class="text-[14px] text-white text-right lg:max-w-[400px] mt-auto" data-aos="fade-left"
-            data-aos-delay="300">ვთანამშრომლობთ მხოლოდ კახეთის, ქართლისა და დასავლეთ საქართველოს მარნებთან.</p>
+          <p
+            class="text-[14px] text-white text-right lg:max-w-[400px] mt-auto"
+            data-aos="fade-left"
+            data-aos-delay="300"
+          >
+            {{"PARTNERS.CONTENT" | translate}}
+          </p>
         </div>
 
         <div class="line w-full h-0.25 bg-white/25 mt-4"></div>
 
         <div class="carusel relative mt-12 h-auto" data-aos="fade-up">
-          <div class="carusel-inner w-full relative flex items-center gap-5 h-auto justify-around" autoAnimate>
-            <button class="disabled:opacity-30 transition-opacity duration-300 text-white"
-              (click)="prev()" [disabled]="!canPrev()">
+          <div
+            class="carusel-inner w-full relative flex items-center gap-5 h-auto justify-around"
+            autoAnimate
+          >
+            <button
+              class="disabled:opacity-30 transition-opacity duration-300 text-white"
+              (click)="prev()"
+              [disabled]="!canPrev()"
+            >
               LEFT
             </button>
 
             @for (item of visible(); track item.id) {
-            <div class="box w-full rounded-sm overflow-hidden">
-              <div class="img w-full h-60" [style.background-image]="'url(' + item.img + ')'"></div>
-              <div class="content w-full h-35 backdrop-blur-[16px] p-5 flex flex-col gap-2 text-white">
-                <p>კახეთი</p>
-                <h3>მარანი #1</h3>
-                <span>{{item.title}}</span>
+              <div class="box w-full rounded-sm overflow-hidden">
+                <div
+                  class="img w-full h-60"
+                  [style.background-image]="'url(' + item.img + ')'"
+                ></div>
+                <div
+                  class="content w-full h-35 backdrop-blur-[16px] p-5 flex flex-col gap-2 text-white"
+                >
+                  <p>კახეთი</p>
+                  <h3>მარანი #1</h3>
+                  <span>{{ item.title }}</span>
+                </div>
               </div>
-            </div>
             }
 
-            <button class=" disabled:opacity-30 transition-opacity duration-300 text-white"
-              (click)="next()" [disabled]="!canNext()">
+            <button
+              class="disabled:opacity-30 transition-opacity duration-300 text-white"
+              (click)="next()"
+              [disabled]="!canNext()"
+            >
               RIGHT
             </button>
           </div>
@@ -242,5 +310,4 @@
       </div>
     </div>
   </section>
-
 </div>

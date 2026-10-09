@@ -2,6 +2,7 @@ import { NgClass } from '@angular/common';
 import { Component, computed, inject, signal, afterNextRender, HostListener } from '@angular/core';
 import AOS from 'aos';
 import { TranslatePipe } from '@ngx-translate/core';
+import { LangService } from '../../../core/services/lang-service';
 
 @Component({
   selector: 'app-home',
@@ -10,6 +11,13 @@ import { TranslatePipe } from '@ngx-translate/core';
   styleUrl: './home.css',
 })
 export class Home {
+  protected translateService = inject(LangService);
+  protected selectedLang = signal(localStorage.getItem('lang'));
+
+  ngOnChanges() {
+    console.log(localStorage.getItem('lang'));
+  }
+
   private width = signal<number | null>(null);
   constructor() {
     this.width.set(window.innerWidth);
@@ -21,14 +29,12 @@ export class Home {
     });
   }
 
-
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
     this.width.set(event.target.innerWidth);
 
     this.setCaruselMaxVisibleItems(this.width()!);
   }
-
 
   protected data = signal<any[]>([
     {
@@ -56,7 +62,9 @@ export class Home {
   protected start = signal(0);
   protected perView = signal<number>(3);
 
-  protected visible = computed(() => this.data().slice(this.start(), this.start() + this.perView()));
+  protected visible = computed(() =>
+    this.data().slice(this.start(), this.start() + this.perView()),
+  );
 
   protected canPrev = computed(() => this.start() > 0);
   protected canNext = computed(() => this.start() + this.perView() < this.data().length);
@@ -98,7 +106,11 @@ export class Home {
     {
       id: 1,
       date: new Date(2026, 9, 24),
-      title: 'something',
+      title: 'UPCOMING_EVENTS.EVENTS.EVENT_1.TITLE',
+      dateToDisplay: 'UPCOMING_EVENTS.EVENTS.EVENT_1.DATE',
+      place: 'UPCOMING_EVENTS.EVENTS.EVENT_1.PLACE',
+      placeShort: 'UPCOMING_EVENTS.EVENTS.EVENT_1.PLACE_SHORT',
+      description: 'UPCOMING_EVENTS.EVENTS.EVENT_1.DESCRIPTION',
     },
     {
       id: 1,
@@ -106,6 +118,29 @@ export class Home {
       title: 'something',
     },
   ]);
+
+  protected pastEvents = signal<{date: string, title: string}[]>(
+    [
+      {
+        title: "PAST_EVENTS.PAST_EVENTS_LIST.PAST_EVENT_1.TITLE",
+        date: "PAST_EVENTS.PAST_EVENTS_LIST.PAST_EVENT_1.DATE"
+      },
+      {
+        title: "PAST_EVENTS.PAST_EVENTS_LIST.PAST_EVENT_2.TITLE",
+        date: "PAST_EVENTS.PAST_EVENTS_LIST.PAST_EVENT_2.DATE"
+      },
+      {
+        title: "PAST_EVENTS.PAST_EVENTS_LIST.PAST_EVENT_3.TITLE",
+        date: "PAST_EVENTS.PAST_EVENTS_LIST.PAST_EVENT_3.DATE"
+      },
+      {
+        title: "PAST_EVENTS.PAST_EVENTS_LIST.PAST_EVENT_4.TITLE",
+        date: "PAST_EVENTS.PAST_EVENTS_LIST.PAST_EVENT_4.DATE"
+      },
+    ]
+  )
+
+  protected selectedFestival = signal<any>(this.activeFestivals()[0]);
 
   protected year = signal(2026);
   protected month = signal(new Date().getMonth());
@@ -125,11 +160,11 @@ export class Home {
 
   private setCaruselMaxVisibleItems(windowWidth: number): void {
     if (windowWidth < 950) {
-      this.perView.set(1)
+      this.perView.set(1);
     } else if (windowWidth < 1450) {
-      this.perView.set(2)
+      this.perView.set(2);
     } else {
-      this.perView.set(3)
+      this.perView.set(3);
     }
   }
 
@@ -139,7 +174,20 @@ export class Home {
   }
 
   protected select(cell: Cell): void {
-    if (cell.date) this.selected.set(cell.date);
+    if (!cell.date) return;
+
+    this.selected.set(cell.date);
+    this.selectFestival(cell);
+  }
+
+  protected selectFestival(cell: Cell): void {
+    if (!cell.date) return;
+
+    const festival = this.activeFestivals().find(
+      (f) => f.date.toDateString() === cell.date!.toDateString(),
+    );
+
+    this.selectedFestival.set(festival ?? null);
   }
 
   protected shift(delta: number): void {
@@ -151,8 +199,14 @@ export class Home {
   protected isFestival(cell: Cell): boolean {
     if (!cell.date) return false;
 
+    console.log(
+      this.activeFestivals().some(
+        (festival) => festival.date.toDateString() === cell.date!.toDateString(),
+      ),
+    );
+
     return this.activeFestivals().some(
-      festival => festival.date.toDateString() === cell.date!.toDateString()
+      (festival) => festival.date.toDateString() === cell.date!.toDateString(),
     );
   }
 }
