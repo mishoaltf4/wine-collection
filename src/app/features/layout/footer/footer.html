@@ -7,7 +7,7 @@
             <div class="logo"></div>
             <h3 class="text-[20px] max-md:text-[22px] lg:text-[24px] text-white">Wine Collection Of Georgia</h3>
           </div>
-          <p class="text-[14px] text-white">Preserving and promoting Georgian wine culture: festivals, symposiums, and winemaking forums.</p>
+          <p class="text-[14px] text-white">Celebrating Georgian wine and connecting the people behind it through festivals, professional dialogue and cultural exchange.</p>
         </div>
         <div class="right flex flex-col gap-4">
           <span class="text-[12px] uppercase text-gold font-bold">{{"FOOTER.INQUIRIES" | translate}}</span>
@@ -19,10 +19,10 @@
       </div>
 
       <div class="social flex items-center justify-center gap-6 mt-20">
-        <a class="icon cursor-pointer w-9 h-9 rounded-full bg-slate flex items-center justify-center text-gold">
+        <a class="icon cursor-pointer w-9 h-9 rounded-full bg-slate flex items-center justify-center text-gold" [href]="instagramLink" target="_blank">
           <fa-icon [icon]="instagramIcon"></fa-icon>
         </a>
-        <a class="icon cursor-pointer w-9 h-9 rounded-full bg-slate flex items-center justify-center text-gold">
+        <a class="icon cursor-pointer w-9 h-9 rounded-full bg-slate flex items-center justify-center text-gold" [href]="facebookLink" target="_blank">
           <fa-icon [icon]="facebookIcon"></fa-icon>
         </a>
       </div>
