@@ -55,8 +55,12 @@
   :lang(ka) {
     font-family: var(--font-ka);
   }
+
 }
 
+.font-case{
+  font-feature-settings: "case";
+}
 html{
   scroll-behavior: smooth;
 }

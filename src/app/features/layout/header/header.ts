@@ -27,8 +27,8 @@ export class Header {
   }
 
   changeLang(lang: Lang) {
-    localStorage.setItem('lang', lang);
     this.activeLang.set(lang);
+    this.langService.changeLang(lang);
     this.apply(lang);
   }
 

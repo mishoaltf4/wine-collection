@@ -7,23 +7,22 @@
             <div class="logo"></div>
             <h3 class="text-[20px] max-md:text-[22px] lg:text-[24px] text-white">Wine Collection Of Georgia</h3>
           </div>
-          <p class="text-[14px] text-white">Preserving and promoting Georgian wine culture: festivals, symposiums, and winemaking forums.</p>
+          <p class="text-[14px] text-white">Celebrating Georgian wine and connecting the people behind it through festivals, professional dialogue and cultural exchange.</p>
         </div>
         <div class="right flex flex-col gap-4">
           <span class="text-[12px] uppercase text-gold font-bold">{{"FOOTER.INQUIRIES" | translate}}</span>
           <ul class="flex flex-col gap-3">
-            <li class="text-white flex items-center gap-2"><fa-icon class="text-gold text-[14px]" [icon]="phoneIcon"></fa-icon> +995 32 212 3456</li>
-            <li class="text-white flex items-center gap-2"><fa-icon class="text-gold text-[14px]" [icon]="emailIcon"></fa-icon>email@wcg.ge</li>
-            <li class="text-white flex items-center gap-2"><fa-icon class="text-gold text-[14px]" [icon]="locationIcon"></fa-icon>Address, Tbilisi, Georgia</li>
+            <li class="text-white flex items-center gap-2"><fa-icon class="text-gold text-[14px]" [icon]="phoneIcon"></fa-icon> +995 500 05 23 31</li>
+            <li class="text-white flex items-center gap-2"><fa-icon class="text-gold text-[14px]" [icon]="emailIcon"></fa-icon>Winecollectionofgeorgia@gmail.com</li>
           </ul>
         </div>
       </div>
 
       <div class="social flex items-center justify-center gap-6 mt-20">
-        <a class="icon cursor-pointer w-9 h-9 rounded-full bg-slate flex items-center justify-center text-gold">
+        <a class="icon cursor-pointer w-9 h-9 rounded-full bg-slate flex items-center justify-center text-gold" [href]="instagramLink" target="_blank">
           <fa-icon [icon]="instagramIcon"></fa-icon>
         </a>
-        <a class="icon cursor-pointer w-9 h-9 rounded-full bg-slate flex items-center justify-center text-gold">
+        <a class="icon cursor-pointer w-9 h-9 rounded-full bg-slate flex items-center justify-center text-gold" [href]="facebookLink" target="_blank">
           <fa-icon [icon]="facebookIcon"></fa-icon>
         </a>
       </div>

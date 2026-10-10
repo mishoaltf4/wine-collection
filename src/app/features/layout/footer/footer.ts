@@ -16,4 +16,8 @@ export class Footer {
   protected phoneIcon = faPhone;
   protected emailIcon = faEnvelope;
   protected locationIcon = faLocationDot;
+
+  protected instagramLink = "https://www.instagram.com/winecollectionofgeorgia?stkn=OHdqdjI0b2Q4OTBh&utm_source=qr";
+  protected facebookLink = "https://www.facebook.com/profile.php?id=61575911963084";
+
 }
