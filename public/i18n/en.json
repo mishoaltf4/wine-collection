@@ -3,7 +3,8 @@
     "UPCOMING_EVENTS": "Upcoming Events",
     "WHAT_WE_DO": "What We Do",
     "PARTNERS": "Partners",
-    "CONTACT": "Contact"
+    "CONTACT": "Contact",
+    "CATALOG": "Catalog"
   },
   "MONTHS": {
     "JANUARY": "January",
@@ -33,11 +34,11 @@
     "PLACE": "Venue"
   },
   "HERO": {
-    "TITLE": "Sharing Georgian Wine with the World.",
-    "SUBTITLE": "Wine Collection of Georgia connects winemakers, professionals and wine lovers through festivals, tastings and cultural projects - celebrating Georgian wine and creating opportunities for collaboration."
+    "TITLE": "Sharing Georgian Wine with the World",
+    "SUBTITLE": "Wine Collection of Georgia connects winemakers, professionals and wine lovers through festivals, tastings and cultural projects - celebrating Georgian wine and creating opportunities for collaboration"
   },
   "UPCOMING_EVENTS": {
-    "TITLE": "Explore Our Events.",
+    "TITLE": "Explore Our Events",
     "EVENTS": {
       "EVENT_1": {
         "TITLE": "Sighnaghi Autumn Festival - SignWine",
@@ -51,7 +52,15 @@
   "WHAT_WE_DO": {
     "TITLE": "What We Do",
     "SUBTITLE": "We bring Georgian wine into conversation with people, places and cultures - connecting its producers with wine lovers and professionals, and creating opportunities for exchange and international collaboration.",
-    "INFO_1": "Our festivals invite visitors to discover Georgian wines and meet their makers. Tastings, forums and symposiums bring winemakers, sommeliers and international guests together, while art, music and regional traditions give each experience its own character."
+    "INFO_1": "Our festivals invite visitors to discover Georgian wines and meet their makers. Tastings, forums and symposiums bring winemakers, sommeliers and international guests together, while art, music and regional traditions give each experience its own character.",
+    "ICONS": {
+      "WINE_FESTIVAL": "Wine Festivals",
+      "FORUMS": "Forums & Symposiums",
+      "DEGUSTATION": "Wine Tastings & Evaluation",
+      "PARTNERS": "International Partnerships",
+      "PROJECTS": "Wine & Cultural Projects",
+      "POPULARIZATION": "Winery & Producer Promotion"
+    }
   },
   "SERVICES": {
     "WINE_FESTIVALS": "Wine Festivals",
@@ -88,7 +97,12 @@
   },
   "PARTNERS": {
     "TITLE": "Our Partner Wineries",
-    "CONTENT": "Meet the wineries we work with through our festivals, tastings and professional programmes - each bringing its own wines, stories and regional character to the WCG community."
+    "CONTENT": "Meet the wineries we work with through our festivals, tastings and professional programmes - each bringing its own wines, stories and regional character to the WCG community.",
+    "SUPPORT": {
+      "TITLE": "Partners & Support",
+      "SUBTITLE_1": "Our projects are developed with the support of the Ministry of Environmental Protection and Agriculture of Georgia and the National Wine Agency, alongside municipalities and cultural institutions across Georgia.",
+      "SUBTITLE_2": "These partnerships bring together national expertise, local knowledge and cultural perspectives, strengthening our work in promoting Georgian wine in Georgia and internationally."
+    }
   },
   "FOOTER": {
     "INQUIRIES": "Get in Touch",

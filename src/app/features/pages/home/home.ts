@@ -30,9 +30,9 @@ export class Home {
 
   protected data = signal<any[]>([
     { id: 1, img: '/images/home/something.jpg', title: 'something 1' },
-    { id: 2, img: '/images/home/test.jpg', title: 'something 2' },
+    { id: 2, img: '/images/home/hero.png', title: 'something 2' },
     { id: 3, img: '/images/home/mta.jpg', title: 'something 3' },
-    { id: 4, img: '/images/home/test.jpg', title: 'something 4' },
+    { id: 4, img: '/images/home/event-31-oct.jpg', title: 'something 4' },
   ]);
 
   protected start = signal(0);
@@ -121,6 +121,7 @@ export class Home {
       date: null,
     }));
 
+
     for (let day = 1; day <= daysInMonth; day++) {
       cells.push({ day, date: new Date(year, month, day) });
     }
@@ -145,10 +146,14 @@ export class Home {
 
   protected next() {
     if (this.canNext()) this.start.update((s) => s + 1);
+    console.log(this.canNext())
+    console.log(this.canPrev())
   }
 
   protected prev() {
     if (this.canPrev()) this.start.update((s) => s - 1);
+    console.log(this.canNext())
+    console.log(this.canPrev())
   }
 
   private setCarouselMaxVisibleItems(windowWidth: number): void {

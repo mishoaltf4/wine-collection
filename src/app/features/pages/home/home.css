@@ -27,7 +27,7 @@
   z-index: 1;
 
   .img {
-    background: url('/images/home/event.png') center 100% / cover no-repeat;
+    background: url('/images/home/event-31-oct.png') center / cover no-repeat;
   }
 }
 
@@ -71,7 +71,7 @@
         background-position: center;
         background-size: cover;
         /* background-image: url("/images/home/past-events/event-1.jpg"); */
-        
+
         &:first-child{
           background-image: url("/images/home/past-events/event-1.jpg");
         }
