@@ -1,8 +1,9 @@
 <div class="home">
   <section class="hero w-full h-screen" aria-labelledby="hero-title">
-    <div class="container max-lg:px-6">
-      <div class="text flex flex-col justify-center h-screen gap-7 lg:w-180 w-full">
+    <div class="container max-[1300px]:px-6">
+      <div class="text flex flex-col justify-center h-screen gap-7 lg:w-3/4 w-full">
         <h1 id="hero-title" class="text-[60px] max-lg:text-[54px] max-md:text-[42px] text-white font-normal"
+        [ngClass]="{'!text-[44px] !max-lg:text-[42px]': translateService.lang() === 'ka'}"
           data-aos="fade-up" data-aos-duration="1000">
           {{ 'HERO.TITLE' | translate }}
         </h1>
@@ -17,7 +18,7 @@
   </section>
 
   <section class="upcomoing w-full scroll-mt-24" id="upcoming" aria-labelledby="upcoming-title">
-    <div class="container max-lg:px-5">
+    <div class="container max-[1300px]:px-6">
       <div class="upcomoing-inner w-full h-full py-25">
         <h2 id="upcoming-title" class="text-[60px] max-md:text-[36px] text-gold font-normal" data-aos="fade-right">
           {{ 'UPCOMING_EVENTS.TITLE' | translate }}
@@ -52,10 +53,8 @@
                 [ngClass]="{
                       'bg-gold scale-105': isSelected(c),
                       'text-white/100 hover:bg-gold/30 cursor-pointer': isFestival(c),
-                    }"
-                [attr.aria-label]="c.day + ' ' + ('MONTHS.' + monthName() | translate) + ' ' + year()"
-                [attr.aria-pressed]="isSelected(c)"
-                [attr.aria-disabled]="!isFestival(c)"
+                    }" [attr.aria-label]="c.day + ' ' + ('MONTHS.' + monthName() | translate) + ' ' + year()"
+                [attr.aria-pressed]="isSelected(c)" [attr.aria-disabled]="!isFestival(c)"
                 (click)="isFestival(c) ? select(c) : ''">
                 {{ c.day }}
               </button>
@@ -66,8 +65,7 @@
             </div>
           </div>
 
-          <article
-            class="festival p-8 max-md:p-6 flex flex-col gap-6 backdrop-blur-[26px] w-full h-auto rounded-[4px]"
+          <article class="festival p-8 max-md:p-6 flex flex-col gap-6 backdrop-blur-[26px] w-full h-auto rounded-[4px]"
             aria-live="polite" data-aos="fade-up" data-aos-delay="300">
             <header class="title">
               <p class="text-gold text-[14px] uppercase font-bold font-case">{{selectedFestival()?.dateToDisplay |
@@ -90,8 +88,7 @@
               </div>
             </div>
 
-            <a
-              class="w-full flex items-center justify-center rounded-sm h-12 bg-navy text-gold transition-all duration-300 hover:brightness-125 hover:-translate-y-0.5 cursor-pointer"
+            <a class="w-full flex items-center justify-center rounded-sm h-12 bg-navy text-gold transition-all duration-300 hover:brightness-125 hover:-translate-y-0.5 cursor-pointer"
               [href]="facebookLink" target="_blank" rel="noopener noreferrer">
               {{"COMMON.SEE_MORE" | translate}}
               <span class="sr-only">: {{selectedFestival()?.title | translate}}</span>
@@ -103,7 +100,7 @@
   </section>
 
   <section class="what-we-do py-20" id="what-we-do" aria-labelledby="what-we-do-title">
-    <div class="container max-lg:px-6">
+    <div class="container max-[1300px]:px-6">
       <div class="what-we-do__inner flex flex-col gap-8">
         <div class="title flex justify-between max-md:flex-col max-md:gap-6">
           <div class="big flex flex-col gap-4">
@@ -112,9 +109,6 @@
             </h2>
             <div class="line w-20 h-0.25 bg-gold origin-left" data-aos="zoom-in-right" data-aos-delay="150"></div>
           </div>
-          <p class="mt-auto text-white md:w-2/3 w-full" data-aos="fade-up" data-aos-delay="200">
-            {{ 'WHAT_WE_DO.SUBTITLE' | translate }}
-          </p>
         </div>
 
         <ul
@@ -127,7 +121,7 @@
               <img src="/icons/internet.svg" alt="" class="h-6 w-auto" height="24" loading="lazy" decoding="async">
             </div>
             <p class="text-gold text-[16px] font-bold text-center lg:px-6 lg:text-[18px]">
-              Wine Festivals
+              {{"WHAT_WE_DO.ICONS.WINE_FESTIVAL" | translate}}
             </p>
           </li>
           <li
@@ -137,7 +131,7 @@
               <img src="/icons/people.svg" alt="" class="h-6 w-auto" height="24" loading="lazy" decoding="async">
             </div>
             <p class="text-gold text-[16px] font-bold text-center lg:px-6 lg:text-[18px]">
-              Forums & Symposiums
+              {{"WHAT_WE_DO.ICONS.FORUMS" | translate}}
             </p>
           </li>
           <li
@@ -147,7 +141,7 @@
               <img src="/icons/wine.svg" alt="" class="h-6 w-auto" height="24" loading="lazy" decoding="async">
             </div>
             <p class="text-gold text-[16px] font-bold text-center lg:px-6 lg:text-[18px]">
-              Wine Tastings & Evaluation
+              {{"WHAT_WE_DO.ICONS.DEGUSTATION" | translate}}
             </p>
           </li>
           <li
@@ -157,7 +151,7 @@
               <img src="/icons/hands.svg" alt="" class="h-6 w-auto" height="24" loading="lazy" decoding="async">
             </div>
             <p class="text-gold text-[16px] font-bold text-center lg:px-6 lg:text-[18px]">
-              International Partnerships
+              {{"WHAT_WE_DO.ICONS.PARTNERS" | translate}}
             </p>
           </li>
           <li
@@ -167,7 +161,7 @@
               <img src="/icons/award.svg" alt="" class="h-6 w-auto" height="24" loading="lazy" decoding="async">
             </div>
             <p class="text-gold text-[16px] font-bold text-center lg:px-6 lg:text-[18px]">
-              Wine & Cultural Projects
+              {{"WHAT_WE_DO.ICONS.PROJECTS" | translate}}
             </p>
           </li>
           <li
@@ -177,10 +171,13 @@
               <img src="/icons/book.svg" alt="" class="h-6 w-auto" height="24" loading="lazy" decoding="async">
             </div>
             <p class="text-gold text-[16px] font-bold text-center lg:px-6 lg:text-[18px]">
-              Winery & Producer Promotion
+              {{"WHAT_WE_DO.ICONS.POPULARIZATION" | translate}}
             </p>
           </li>
         </ul>
+        <p class="mt-auto text-white w-full" data-aos="fade-up">
+          {{ 'WHAT_WE_DO.SUBTITLE' | translate }}
+        </p>
 
         <p class="text-white" data-aos="fade-up">
           {{"WHAT_WE_DO.INFO_1" | translate}}
@@ -192,8 +189,8 @@
           </h3>
           <div class="boxes mt-9 grid grid-cols-1 gap-y-4 md:grid-cols-2 md:gap-5">
             @for (pastEvent of pastEvents(); track $index) {
-            <article class="box w-full rounded-sm overflow-hidden transition-transform duration-500"
-              data-aos="fade-up" data-aos-delay="0">
+            <article class="box w-full rounded-sm overflow-hidden transition-transform duration-500" data-aos="fade-up"
+              data-aos-delay="0">
               <div class="img w-full h-[190px]"></div>
               <div class="content p-4 flex flex-col gap-2 backdrop-blur-[26px]">
                 <p class="text-white text-[14px]">{{pastEvent.date | translate}}</p>
@@ -202,23 +199,31 @@
             </article>
             }
           </div>
+
+          <div class="partners-support mt-25">
+            <h3 class="text-[36px] max-md:text-[32px] text-white" data-aos="fade-up">{{"PARTNERS.SUPPORT.TITLE" | translate}}</h3>
+            <p class="text-white" data-aos="fade-up">{{"PARTNERS.SUPPORT.SUBTITLE_1" | translate}}</p>
+
+            <div class="icons"></div>
+
+            <p class="text-white" data-aos="fade-up">{{"PARTNERS.SUPPORT.SUBTITLE_2" | translate}}</p>
+        </div>
         </div>
       </div>
     </div>
   </section>
 
   <section class="partners bg-black h-auto" id="partners" aria-labelledby="partners-title">
-    <div class="container max-lg:px-6">
+    <div class="container max-[1300px]:px-6">
       <div class="partners-inner py-20">
         <div class="title flex justify-between max-lg:flex-col max-lg:gap-4">
           <div class="left flex flex-col gap-3" data-aos="fade-right" data-aos-delay="300">
             <h2 id="partners-title" class="text-[44px] text-gold">{{"PARTNERS.TITLE" | translate}}</h2>
             <div class="line w-15 h-0.25 bg-gold"></div>
-          </div>
-          <p class="text-[14px] text-white text-right lg:max-w-[400px] mt-auto" data-aos="fade-left"
-            data-aos-delay="300">
+            <p class="text-[14px] text-white" data-aos="fade-right" data-aos-delay="300">
             {{"PARTNERS.CONTENT" | translate}}
           </p>
+          </div>
         </div>
 
         <div class="line w-full h-0.25 bg-white/25 mt-4"></div>
@@ -227,7 +232,7 @@
           aria-labelledby="partners-title">
           <div class="carusel-inner w-full relative flex items-center gap-5 h-auto justify-around" autoAnimate>
             <button type="button" class="disabled:opacity-30 transition-opacity duration-300 text-white"
-              aria-label="Previous" (click)="next()" [disabled]="!canNext()">
+              aria-label="Previous" (click)="prev()" [disabled]="!canPrev()">
               <fa-icon [icon]="leftIcon" size="2x" aria-hidden="true"></fa-icon>
             </button>
 

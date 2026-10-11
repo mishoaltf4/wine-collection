@@ -1,5 +1,5 @@
 <header class="fixed h-25 left-0 top-0 right-0 z-50">
-  <div class="header-inner lg:px-20 max-md:px-5 w-full h-25 bg-navy flex items-center justify-between">
+  <div class="header-inner lg:px-20 max-lg:px-5 w-full h-25 bg-navy flex items-center justify-between">
     <div class="logo flex items-center gap-4">
       <div class="logo">
         <img src="/icons/wcg-logo.svg" alt="logo" class="h-[60px] w-auto" height="60" loading="lazy" decoding="async">
@@ -7,7 +7,7 @@
       <h1 class="text-xl text-gold max-md:text-[15px]">Wine Collection of Georgia</h1>
     </div>
 
-    <nav class="max-lg:hidden">
+    <nav class="max-[1300px]:hidden">
       <ul class="flex items-center gap-10">
         <li><a routerLink="/" fragment="upcoming" class="text-gold uppercase">{{ 'NAVIGATION.UPCOMING_EVENTS' |
             translate }}</a></li>
@@ -20,7 +20,9 @@
       </ul>
     </nav>
 
-    <div class="lang flex items-center gap-3 max-lg:hidden">
+
+    <div class="lang flex items-center gap-3 max-[1300px]:hidden">
+      <a [href]="'https://www.instagram.com/winecollectionofgeorgia'" target="_blank" class="px-3 py-2 bg-gold rounded-sm text-white font-case text-[16px] uppercase font-semibold">{{ 'NAVIGATION.CATALOG' | translate }}</a>
       <p (click)="changeLang('en')" class="text-muted-blue cursor-pointer"
         [ngClass]="{ 'text-white border-b-gold border-b-[1.5px]': activeLang() === 'en' }">
         EN
@@ -32,7 +34,7 @@
       </p>
     </div>
 
-    <div class="lg:hidden">
+    <div class="min-[1300px]:hidden">
       <div class="burger-menu flex flex-col cursor-pointer w-7 gap-1.25" (click)="openMenu()">
         <div class="line w-full h-0.5 bg-gold"></div>
         <div class="line w-full h-0.5 bg-gold"></div>
