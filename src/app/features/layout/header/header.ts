@@ -1,4 +1,4 @@
-import { Component,  inject, signal } from '@angular/core';
+import { Component,  HostListener,  inject, signal } from '@angular/core';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { LangService } from '../../../core/services/lang-service';
 import { NgClass } from '@angular/common';
@@ -20,6 +20,15 @@ export class Header {
   );
 
   protected isMenuOpen = signal<boolean>(false);
+  private width = signal<number | null>(null);
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.width.set(event.target.innerWidth);
+    if(this.width()! > 1300){
+      this.isMenuOpen.set(false)
+    }
+  }
 
   constructor() {
     this.translateService.addLangs(['en', 'ka']);
